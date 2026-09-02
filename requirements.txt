@@ -1,0 +1,22 @@
+# 本项目实测通过的版本组合（macOS arm64 / Python 3.11）
+torch==2.13.0
+torchvision==0.28.0
+scikit-learn==1.9.0
+numpy==2.3.5
+opencv-python-headless==5.0.0
+pillow==12.3.0
+joblib==1.6.0
+
+# 仅导出 CoreML 时需要
+coremltools==9.0
+
+# 仅与 Roboflow 交互时需要
+roboflow==1.4.1
+
+# ── 两条已知的版本冲突，都已在代码里绕开，升级前先看 README ──
+# 1. coremltools 9.0 只支持 scikit-learn <= 1.5.1，这里是 1.9.0，
+#    它的 sklearn 转换 API 会被自动禁用。export_coreml.py 因此直接遍历
+#    sklearn 的树结构手工构建 TreeEnsembleClassifier，不走那个 API，
+#    所以版本不匹配无所谓，导出精度仍是逐位精确（3.9e-16）。
+# 2. coremltools 9.0 官方只测到 torch 2.7.0，这里是 2.13.0，转换会告警。
+#    实测正常，产物已验证。

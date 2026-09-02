@@ -1,0 +1,37 @@
+# ── 数据集：靠 make_cls_dataset.py 和 Roboflow 导出重建，不进仓库 ──
+EfficientNetV2/foot_classification/
+foot_classification_cls/
+v19/
+v20/
+v19_*/
+*.zip
+
+# ── 模型权重与产物：建议走 Git LFS，默认不提交 ──
+*.pth
+*.joblib
+*.mlpackage/
+*.mlpackage.bak/
+*.mlmodel
+coreml/
+
+# ── 运行产物 ──
+*.log
+*.npz
+cls_manifest.csv
+tc_pred.txt
+tc_fusion.csv
+push_log.csv
+*_log.csv
+
+# ── 环境 ──
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+.idea/
+.vscode/
+
+# ── 绝不能进仓库 ──
+.env
+*.key
+secrets*
